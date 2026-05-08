@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FlowCycle Monitor | Premium & Private Period Tracker</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --color-primary: #df9ba6;
+            --color-primary-dark: #b85970;
+            --color-bg: #1a0f14;
+            --color-card: #24151c;
+            --color-fg: #fcf8f7;
+            --color-muted: #a28891;
+            --color-border: #3a2630;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--color-bg);
+            color: var(--color-fg);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+
+        /* Navigation */
+        nav { padding: 32px 0; display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-weight: 800; fontSize: 24px; display: flex; align-items: center; gap: 10px; }
+        .logo-icon {
+            width: 32px; height: 32px; background: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark));
+            border-radius: 8px; display: flex; align-items: center; justify-content: center; color: white;
+        }
+
+        /* Hero Section */
+        .hero { padding: 80px 0; text-align: center; }
+        .hero h1 {
+            font-size: clamp(48px, 8vw, 72px); font-weight: 800; line-height: 1.1;
+            letter-spacing: -2px; margin-bottom: 24px;
+        }
+        .hero p { font-size: 20px; color: var(--color-muted); max-width: 600px; margin: 0 auto 40px; }
+
+        .btn-download {
+            display: inline-flex; align-items: center; gap: 12px;
+            padding: 20px 40px; background: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark));
+            color: white; text-decoration: none; border-radius: 50px; font-weight: 700; font-size: 18px;
+            box-shadow: 0 10px 30px rgba(184, 89, 112, 0.3); transition: transform 0.2s;
+        }
+        .btn-download:hover { transform: translateY(-3px); }
+
+        /* Screenshots Section */
+        .screenshots { padding: 60px 0; display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; }
+        .phone-mockup {
+            width: 280px; height: 580px; background: var(--color-card); border: 8px solid var(--color-border);
+            border-radius: 40px; box-shadow: 0 20px 50px rgba(0,0,0,0.5); overflow: hidden; position: relative;
+        }
+        .phone-mockup img { width: 100%; height: 100%; object-fit: cover; }
+        .placeholder-text {
+            position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+            color: var(--color-muted); text-align: center; font-size: 12px; font-weight: 600;
+        }
+
+        /* Features */
+        .features { padding: 100px 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 32px; }
+        .feat-card { padding: 40px; background: var(--color-card); border-radius: 24px; border: 1px solid var(--color-border); }
+        .feat-card h3 { font-size: 24px; margin-bottom: 16px; color: var(--color-primary); }
+        .feat-card p { color: var(--color-muted); }
+
+        footer { padding: 60px 0; border-top: 1px solid var(--color-border); text-align: center; color: var(--color-muted); font-size: 14px; }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate { animation: fadeInUp 0.8s ease forwards; }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <nav>
+            <div class="logo">
+                <div class="logo-icon">F</div>
+                <span>FlowCycle Monitor</span>
+            </div>
+        </nav>
+
+        <section class="hero animate">
+            <h1 style="color: var(--color-primary);">Privately Tracking <br>Your Body's Flow.</h1>
+            <p>A premium, zero-knowledge cycle monitor with AI-powered insights. Your health data stays where it belongs: on your device.</p>
+            <a href="FlowCycleMonitor.apk" class="btn-download">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                DOWNLOAD APP (APK)
+            </a>
+        </section>
+
+        <section class="screenshots">
+            <div class="phone-mockup animate" style="animation-delay: 0.2s;">
+                <img src="screen1.png" alt="Dashboard">
+            </div>
+            <div class="phone-mockup animate" style="animation-delay: 0.4s;">
+                <img src="screen2.jpg" alt="Insights">
+            </div>
+            <div class="phone-mockup animate" style="animation-delay: 0.6s;">
+                <img src="screen3.jpg" alt="AI Chat">
+            </div>
+        </section>
+
+        <section class="features">
+            <div class="feat-card">
+                <h3>Zero Cloud Data</h3>
+                <p>We use a "Zero-Knowledge" local-first model. Your health data is stored in your device's encrypted sandbox, never on our servers.</p>
+            </div>
+            <div class="feat-card">
+                <h3>AI Symptom Analysis</h3>
+                <p>Get personalized patterns and trend reports powered by Llama 3.3. Understand how your energy and mood track with your cycle.</p>
+            </div>
+            <div class="feat-card">
+                <h3>Premium Branding</h3>
+                <p>Choose from 4 high-end themes like Rose Quartz and Emerald Forest. Designed for a professional, elegant experience.</p>
+            </div>
+        </section>
+
+        <footer>
+            &copy; 2025 FlowCycle Monitor. All rights reserved. <br>
+            Designed for Privacy.
+        </footer>
+    </div>
+
+</body>
+</html>
