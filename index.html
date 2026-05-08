@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FlowCycle Monitor | Premium & Private Period Tracker</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
             --color-primary: #df9ba6;
@@ -12,121 +12,394 @@
             --color-bg: #1a0f14;
             --color-card: #24151c;
             --color-fg: #fcf8f7;
-            --color-muted: #a28891;
+            --color-muted: #2d1d25;
+            --color-muted-fg: #a28891;
             --color-border: #3a2630;
+            --color-accent: #9bb89a;
+            --shadow-lg: 0 20px 50px rgba(0,0,0,0.5);
+            --radius-lg: 24px;
+            --radius-xl: 40px;
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; }
+
         body {
             font-family: 'Inter', sans-serif;
             background-color: var(--color-bg);
             color: var(--color-fg);
             line-height: 1.6;
             overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
         }
 
-        .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
 
-        /* Navigation */
-        nav { padding: 32px 0; display: flex; justify-content: space-between; align-items: center; }
-        .logo { font-weight: 800; fontSize: 24px; display: flex; align-items: center; gap: 10px; }
+        /* Header */
+        header {
+            padding: 32px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            animation: fadeIn 0.8s ease;
+        }
+
+        .logo {
+            font-weight: 800;
+            font-size: 24px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            letter-spacing: -1px;
+        }
+
         .logo-icon {
-            width: 32px; height: 32px; background: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark));
-            border-radius: 8px; display: flex; align-items: center; justify-content: center; color: white;
+            width: 36px;
+            height: 36px;
+            background: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark));
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 20px;
         }
 
         /* Hero Section */
-        .hero { padding: 80px 0; text-align: center; }
+        .hero {
+            padding: 100px 0 60px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .hero-badge {
+            background: var(--color-muted);
+            color: var(--color-primary);
+            padding: 8px 16px;
+            border-radius: 100px;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 24px;
+            border: 1px solid var(--color-border);
+            animation: fadeInUp 0.6s ease;
+        }
+
         .hero h1 {
-            font-size: clamp(48px, 8vw, 72px); font-weight: 800; line-height: 1.1;
-            letter-spacing: -2px; margin-bottom: 24px;
+            font-size: clamp(48px, 8vw, 84px);
+            font-weight: 800;
+            line-height: 1.05;
+            letter-spacing: -3px;
+            margin-bottom: 32px;
+            animation: fadeInUp 0.8s ease 0.1s both;
         }
-        .hero p { font-size: 20px; color: var(--color-muted); max-width: 600px; margin: 0 auto 40px; }
 
-        .btn-download {
-            display: inline-flex; align-items: center; gap: 12px;
-            padding: 20px 40px; background: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark));
-            color: white; text-decoration: none; border-radius: 50px; font-weight: 700; font-size: 18px;
-            box-shadow: 0 10px 30px rgba(184, 89, 112, 0.3); transition: transform 0.2s;
+        .hero h1 span {
+            background: linear-gradient(to right, var(--color-primary), #f2ccd3);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
-        .btn-download:hover { transform: translateY(-3px); }
 
-        /* Screenshots Section */
-        .screenshots { padding: 60px 0; display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; }
-        .phone-mockup {
-            width: 280px; height: 580px; background: var(--color-card); border: 8px solid var(--color-border);
-            border-radius: 40px; box-shadow: 0 20px 50px rgba(0,0,0,0.5); overflow: hidden; position: relative;
+        .hero p {
+            font-size: clamp(18px, 3vw, 22px);
+            color: var(--color-muted-fg);
+            max-width: 650px;
+            margin-bottom: 48px;
+            animation: fadeInUp 0.8s ease 0.2s both;
         }
-        .phone-mockup img { width: 100%; height: 100%; object-fit: cover; }
-        .placeholder-text {
-            position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
-            color: var(--color-muted); text-align: center; font-size: 12px; font-weight: 600;
+
+        .btn-group {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+            justify-content: center;
+            animation: fadeInUp 0.8s ease 0.3s both;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            padding: 20px 36px;
+            border-radius: 100px;
+            font-weight: 700;
+            font-size: 18px;
+            text-decoration: none;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark));
+            color: white;
+            box-shadow: 0 10px 30px rgba(184, 89, 112, 0.4);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 15px 40px rgba(184, 89, 112, 0.5);
+        }
+
+        .btn-secondary {
+            background: var(--color-card);
+            color: var(--color-fg);
+            border: 1px solid var(--color-border);
+        }
+
+        .btn-secondary:hover {
+            background: var(--color-border);
+            transform: translateY(-5px);
+        }
+
+        /* App Showcase */
+        .showcase {
+            padding: 80px 0;
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+            perspective: 1000px;
+        }
+
+        .phone-container {
+            width: 300px;
+            height: 620px;
+            background: #000;
+            border: 12px solid var(--color-border);
+            border-radius: 50px;
+            box-shadow: var(--shadow-lg);
+            overflow: hidden;
+            position: relative;
+            transform: rotateY(-10deg) rotateX(5deg);
+            transition: transform 0.5s ease;
+        }
+
+        .phone-container:hover {
+            transform: rotateY(0deg) rotateX(0deg) scale(1.05);
+            z-index: 10;
+        }
+
+        .phone-container:nth-child(2) {
+            transform: translateY(-40px);
+        }
+
+        .phone-container:nth-child(3) {
+            transform: rotateY(10deg) rotateX(5deg);
+        }
+
+        .phone-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .phone-placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--color-card);
+            color: var(--color-muted-fg);
+            text-align: center;
+            font-size: 14px;
+            font-weight: 600;
+            padding: 40px;
         }
 
         /* Features */
-        .features { padding: 100px 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 32px; }
-        .feat-card { padding: 40px; background: var(--color-card); border-radius: 24px; border: 1px solid var(--color-border); }
-        .feat-card h3 { font-size: 24px; margin-bottom: 16px; color: var(--color-primary); }
-        .feat-card p { color: var(--color-muted); }
+        .features-grid {
+            padding: 100px 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 32px;
+        }
 
-        footer { padding: 60px 0; border-top: 1px solid var(--color-border); text-align: center; color: var(--color-muted); font-size: 14px; }
+        .feat-card {
+            padding: 48px;
+            background: var(--color-card);
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--color-border);
+            transition: transform 0.3s ease;
+        }
 
+        .feat-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--color-primary);
+        }
+
+        .feat-icon {
+            width: 56px;
+            height: 56px;
+            background: var(--color-muted);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 24px;
+            color: var(--color-primary);
+            font-size: 24px;
+        }
+
+        .feat-card h3 {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+
+        .feat-card p {
+            color: var(--color-muted-fg);
+            font-size: 16px;
+            line-height: 1.7;
+        }
+
+        /* Privacy Section */
+        .privacy-banner {
+            background: linear-gradient(135deg, var(--color-card), var(--color-bg));
+            border-radius: var(--radius-xl);
+            padding: 80px 40px;
+            text-align: center;
+            border: 1px solid var(--color-border);
+            margin: 60px 0;
+        }
+
+        .privacy-banner h2 {
+            font-size: 42px;
+            font-weight: 800;
+            margin-bottom: 24px;
+            letter-spacing: -1px;
+        }
+
+        .privacy-list {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+            margin-top: 40px;
+        }
+
+        .privacy-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 600;
+            color: var(--color-accent);
+        }
+
+        /* Footer */
+        footer {
+            padding: 80px 0 40px;
+            border-top: 1px solid var(--color-border);
+            text-align: center;
+            color: var(--color-muted-fg);
+        }
+
+        .footer-logo {
+            margin-bottom: 24px;
+            opacity: 0.6;
+            filter: grayscale(1);
+        }
+
+        /* Animations */
         @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(30px); }
+            from { opacity: 0; transform: translateY(40px); }
             to { opacity: 1; transform: translateY(0); }
         }
-        .animate { animation: fadeInUp 0.8s ease forwards; }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @media (max-width: 768px) {
+            .hero { padding-top: 60px; }
+            .showcase { gap: 20px; }
+            .phone-container { transform: none !important; width: 260px; height: 530px; }
+            .btn { width: 100%; justify-content: center; }
+        }
     </style>
 </head>
 <body>
 
     <div class="container">
-        <nav>
+        <header>
             <div class="logo">
                 <div class="logo-icon">F</div>
-                <span>FlowCycle Monitor</span>
+                <span>FlowCycle</span>
             </div>
-        </nav>
+            <a href="https://github.com/heartify133-lgtm/flowcycle-website/releases/download/v1.0.0/FlowCycleMonitor.apk" class="btn-secondary" style="padding: 10px 24px; font-size: 14px;">Download APK</a>
+        </header>
 
-        <section class="hero animate">
-            <h1 style="color: var(--color-primary);">Privately Tracking <br>Your Body's Flow.</h1>
-            <p>A premium, zero-knowledge cycle monitor with AI-powered insights. Your health data stays where it belongs: on your device.</p>
-            <a href="https://github.com/heartify133-lgtm/flowcycle-website/releases/download/v1.0.0/FlowCycleMonitor.apk" class="btn-download">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
-                DOWNLOAD APP (APK)
-            </a>
-        </section>
+        <section class="hero">
+            <div class="hero-badge">AI-Powered Privacy · v1.0.0</div>
+            <h1>Your Cycle. <br><span>Fully Private.</span></h1>
+            <p>Experience the most elegant and secure period tracker. No accounts, no cloud, no data tracking. Just you and your body's rhythm.</p>
 
-        <section class="screenshots">
-            <div class="phone-mockup animate" style="animation-delay: 0.2s;">
-                <img src="screen1.png" alt="Dashboard">
-            </div>
-            <div class="phone-mockup animate" style="animation-delay: 0.4s;">
-                <img src="screen2.jpg" alt="Insights">
-            </div>
-            <div class="phone-mockup animate" style="animation-delay: 0.6s;">
-                <img src="screen3.jpg" alt="AI Chat">
+            <div class="btn-group">
+                <a href="https://github.com/heartify133-lgtm/flowcycle-website/releases/download/v1.0.0/FlowCycleMonitor.apk" class="btn btn-primary">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                    Download App (36MB APK)
+                </a>
+                <a href="#features" class="btn btn-secondary">Explore Features</a>
             </div>
         </section>
 
-        <section class="features">
+        <section class="showcase">
+            <div class="phone-container">
+                <img src="screen1.png" alt="FlowCycle Dashboard" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                <div class="phone-placeholder" style="display:none;">
+                    <strong>Dashboard View</strong><br><br>Add screen1.png to your folder to see this in action.
+                </div>
+            </div>
+            <div class="phone-container">
+                <img src="screen2.jpg" alt="AI Insights" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                <div class="phone-placeholder" style="display:none;">
+                    <strong>AI Insights</strong><br><br>Add screen2.jpg to your folder to see this in action.
+                </div>
+            </div>
+            <div class="phone-container">
+                <img src="screen3.jpg" alt="Premium Themes" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                <div class="phone-placeholder" style="display:none;">
+                    <strong>AI Symptom Chat</strong><br><br>Add screen3.jpg to your folder to see this in action.
+                </div>
+            </div>
+        </section>
+
+        <section id="features" class="features-grid">
             <div class="feat-card">
-                <h3>Zero Cloud Data</h3>
-                <p>We use a "Zero-Knowledge" local-first model. Your health data is stored in your device's encrypted sandbox, never on our servers.</p>
+                <div class="feat-icon">🔒</div>
+                <h3>Zero-Knowledge</h3>
+                <p>Built with a local-first architecture. Your data never leaves your phone's encrypted sandbox. We have no servers, so we can't see your data.</p>
             </div>
             <div class="feat-card">
-                <h3>AI Symptom Analysis</h3>
-                <p>Get personalized patterns and trend reports powered by Llama 3.3. Understand how your energy and mood track with your cycle.</p>
+                <div class="feat-icon">🤖</div>
+                <h3>AI Assistant</h3>
+                <p>Personalized cycle analysis powered by Llama 3.3. Get deep insights into your moods, energy, and symptoms without sacrificing privacy.</p>
             </div>
             <div class="feat-card">
-                <h3>Premium Branding</h3>
-                <p>Choose from 4 high-end themes like Rose Quartz and Emerald Forest. Designed for a professional, elegant experience.</p>
+                <div class="feat-icon">✨</div>
+                <h3>Premium Design</h3>
+                <p>Choose from 4 stunning themes: Rose Quartz, Soft Blossom, Emerald Forest, and Midnight Ocean. A truly premium tracking experience.</p>
+            </div>
+        </section>
+
+        <section class="privacy-banner">
+            <h2>The Privacy Standard</h2>
+            <p style="color: var(--color-muted-fg); max-width: 700px; margin: 0 auto 40px;">Most trackers sell your data. We don't even have a database to store it in. Your health is your business.</p>
+            <div class="privacy-list">
+                <div class="privacy-item">✅ No Login Required</div>
+                <div class="privacy-item">✅ 100% Offline Core</div>
+                <div class="privacy-item">✅ Encrypted Local Storage</div>
+                <div class="privacy-item">✅ Anonymous AI Processing</div>
             </div>
         </section>
 
         <footer>
-            &copy; 2025 FlowCycle Monitor. All rights reserved. <br>
-            Designed for Privacy.
+            <div class="logo footer-logo">
+                <div class="logo-icon">F</div>
+                <span>FlowCycle</span>
+            </div>
+            <p>&copy; 2025 FlowCycle Monitor · Focused on Privacy and Elegance.</p>
+            <p style="font-size: 12px; margin-top: 12px; opacity: 0.5;">Download directly via GitHub Releases for maximum security.</p>
         </footer>
     </div>
 
